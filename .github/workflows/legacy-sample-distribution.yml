@@ -1,4 +1,4 @@
-name: legacy-sample-distribution
+name: Build with Legacy APK
 
 on:
   workflow_dispatch:

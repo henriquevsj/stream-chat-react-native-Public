@@ -1,4 +1,4 @@
-name: sample-distribution
+name: Build with Sample APK
 
 concurrency:
   group: sample-distribution-${{ github.ref }}
