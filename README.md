@@ -1,77 +1,71 @@
-# Official React Native SDK for Stream Chat
+# Mobile Security - Take-home DevSecOps
 
-<p align="center">
-  <a href="https://getstream.io/chat/react-native-chat/tutorial/"><img src="https://github.com/GetStream/stream-chat-react-native/blob/main/screenshots/readme/cover.png" alt="react native chat" width="100%" /></a>
-</p>
+**Which mobile apps were used**
 
-> The official React Native and Expo components for Stream Chat, a service for
-> building chat applications.
+It was used Stream Chat for evaluation, it has tight code and was developed using React Native
+
+**Code:** [Stream Chat React Native](https://github.com/GetStream/stream-chat-react-native)
+
+Although GitHub Actions generates the artifact for installation on the Android emulator, I chose to use another artifact also coming from Strem Chat but focused on Andoid and already populated with information.
+
+**APK:** [Stream Chat Android](https://github.com/GetStream/stream-chat-android)
 
 
-[![NPM](https://img.shields.io/npm/v/stream-chat-react-native.svg)](https://www.npmjs.com/package/stream-chat-react-native)
-[![Build Status](https://github.com/GetStream/stream-chat-react-native/workflows/build/badge.svg)](https://github.com/GetStream/stream-chat-react-native/actions)
-[![Component Reference](https://img.shields.io/badge/docs-component%20reference-blue.svg)](https://getstream.io/chat/docs/sdk/reactnative)
+## SAST
 
-<img align="right" src="https://getstream.imgix.net/images/ios-chat-tutorial/iphone_chat_art@3x.png?auto=format,enhance" width="50%" />
+For the SAST analysis I chose to use two tools, SonarQube and CodeQL.
 
-**Quick Links**
+**CodeQL**
 
-- [Stream Chat API](https://getstream.io/chat/) product overview
-- [Register](https://getstream.io/chat/trial/) to get an API key for Stream Chat
-- [React Native Chat Tutorial](https://getstream.io/chat/react-native-chat/tutorial/)
-- [Chat UI Kit](https://getstream.io/chat/ui-kit/)
-- [Documentation](https://getstream.io/chat/docs/sdk/reactnative)
-- [Release Notes](https://github.com/GetStream/stream-chat-react-native/releases)
+As I need to deliver this activity via GitHub and the repository must be public, I chose a tool with native integration and free to use as long as it is in public repositories, CodeQL.
+Scanning was configured in the GitHub repository configuration interface.
 
-## Contents
+1 - Settings
 
-- [React Native Chat Tutorial](#-react-native-chat-tutorial)
-- [Example Apps](#-example-apps)
-- [Keep in mind](#-keep-in-mind)
-- [Contributing](#-contributing)
+2 - Code security and analysis
 
-## 📖 React Native Chat Tutorial
+3- CodeQL analysis > Enable
 
-The best place to start is the [React Native Chat Tutorial](https://getstream.io/chat/react-native-chat/tutorial/). It teaches you how to use this SDK and also shows how to make frequently required changes.
+This way, GitHub creates an exclusive Action for CodeQL analyses, and with each Commit or Pull Request it will be executed, in addition to being configured to perform periodic analyses.
 
-## Free for Makers
+Link: [CodeQL](https://codeql.github.com/) 
 
-Stream is free for most side and hobby projects. To qualify your project/company needs to have < 5 team members and < $10k in monthly revenue.
-For complete pricing details visit our [Chat Pricing Page](https://getstream.io/chat/pricing/)
+**SonarQube**
 
-## 🔮 Example Apps
+In addition to the SAST analysis carried out by CodeQL, I also decided to implement the SonarQube analysis for SAST and also code quality analysis. The implementation was done as follows:
 
-This repo includes 3 example apps. One made with Expo, two in TypeScript. One TypeScript app is a simple implementation for reference, the other is a more full featured app example.
+1 - Using a Docker container, I uploaded an image containing SonarQube.
 
-- [Expo example](./examples/ExpoMessaging)
-- [Typescript example](./examples/TypeScriptMessaging)
-- [Fully featured messaging application](./examples/SampleApp)
+2 - I created a configuration file in the root of the project (sonar-project.properties)
 
-Besides, our team maintains a dedicated repository for fully-fledged sample applications and demos at [GetStream/react-native-samples](https://github.com/GetStream/react-native-samples). Please consider checking following sample applications:
+3- I added the following YAML lines to perform the analysis:
 
-- [Slack Clone](https://github.com/GetStream/react-native-samples/tree/main/projects/SlackClone#slack-clone-using-react-native-and-stream-chat)
-- [iMessage Clone](https://github.com/GetStream/react-native-samples/tree/main/projects/iMessageClone#imessage-clone)
-- [WhatsApp Clone](https://github.com/GetStream/react-native-samples/tree/main/projects/WhatsAppClone#whatsapp-clone-using-react-native-and-stream-chat)
+```
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+```
 
-## 💬 Keep in mind
+The analysis was also being performed through commits or Pull Requests, but as the SonarQube analysis proceeds the build, I needed to make a few attempts until everything was correct, I decided to switch to manual analysis command: "workflow_dispatch"
 
-1. Navigation between different components is something we expect consumers to implement. You can check out the example given in this repository
+Link: [SonarQube](https://hub.docker.com/_/sonarqube)
 
-2. Minor releases may come with some breaking changes, so always check the release notes before upgrading the minor version.
+## DAST
 
-You can see detailed documentation about the components at <https://getstream.io/chat/docs/sdk/reactnative/>
+For the DAST analysis, Owasp Zap was chosen because it is free to use and delivers good results despite sometimes generating false positives.
+This way, a real-time scan was carried out by Owasp Zap of the APK running using the Android Studio environment. For that:
 
-## 👏 Contributing
+1 - I ran an android device using Android Studio
 
-We welcome code changes that improve this library or fix a problem, and please make sure to follow all best practices and test all the changes. Please check our [dev setup docs](https://github.com/GetStream/stream-chat-react-native/wiki/Dev-setup-for-contributing-to-the-library) to get you started. We are pleased to merge your code into the official repository. Make sure to sign our [Contributor License Agreement (CLA)](https://docs.google.com/forms/d/e/1FAIpQLScFKsKkAJI7mhCr7K9rEIOpqIDThrWxuvxnwUq2XkHyG154vQ/viewform) first. See our license file for more details.
+2 - I configured the proxy manually so that Owasp Zap could make the necessary captures, including installing the dynamic certificate provided by Owasp Zap.
 
-## Git flow & Release process
+3 - I identified possible captures in real time that could be explored in more detail.
 
-We enforce conventional commits and have an automated releasing process using workspaces and semantic-release. Read our [git flow & release process guide](https://github.com/GetStream/stream-chat-react-native/blob/main/RELEASE_PROCESS.md) for more information
+Link: [Owasp Zap](https://www.zaproxy.org/)
 
-## We are hiring
 
-We've recently closed a [\$38 million Series B funding round](https://techcrunch.com/2021/03/04/stream-raises-38m-as-its-chat-and-activity-feed-apis-power-communications-for-1b-users/) and we keep actively growing.
-Our APIs are used by more than a billion end-users, and you'll have a chance to make a huge impact on the product within a team of the strongest engineers all over the world.
-
-Check out our current openings and apply via [Stream's website](https://getstream.io/team/#jobs).
