@@ -28,6 +28,13 @@ Scanning was configured in the GitHub repository configuration interface.
 
 This way, GitHub creates an exclusive Action for CodeQL analyses, and with each Commit or Pull Request it will be executed, in addition to being configured to perform periodic analyses.
 
+If necessary to direct personalized analysis, the following YAML code must be used:
+```
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+```
 Link: [CodeQL](https://codeql.github.com/) 
 
 **SonarQube**
