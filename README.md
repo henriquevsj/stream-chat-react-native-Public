@@ -64,15 +64,31 @@ Link: [SonarQube](https://hub.docker.com/_/sonarqube)
 
 ## DAST
 
+**Owasp Zap**
 For the DAST analysis, Owasp Zap was chosen because it is free to use and delivers good results despite sometimes generating false positives.
 This way, a real-time scan was carried out by Owasp Zap of the APK running using the Android Studio environment. For that:
 
 1 - I ran an android device using Android Studio
 
-2 - I configured the proxy manually so that Owasp Zap could make the necessary captures, including installing the dynamic certificate provided by Owasp Zap.
+2 - Configure the proxy manually so that Owasp Zap could make the necessary captures, including installing the dynamic certificate provided by Owasp Zap.
 
-3 - I identified possible captures in real time that could be explored in more detail.
+3 - And identified possible captures in real time that could be explored in more detail.
 
 Link: [Owasp Zap](https://www.zaproxy.org/)
+
+Problems and observations:
+The intention at this point was to perform a real-time Proxy scan of the application, but for some reason I was unsuccessful as the application stopped working when I used the proxy and the Zap certificate.
+
+**qark**
+
+Due to the problems faced with the analysis carried out with Owasp Zap, I decided to use an approach to analyzing the binary itself.
+Using LinkedIn's qark I obtained a more complete analysis, for this:
+
+1- Run: pip install qark
+
+2- Run: qark --sdk-path /Users/henriquevieira/Library/Android/sdk --apk /Users/henriquevieira/Downloads/stream-chat-android-ui-components-sample-release/stream-chat-android- ui-components-sample-demo-release.apk
+
+3- Open and analyze the generated file
+
 
 
