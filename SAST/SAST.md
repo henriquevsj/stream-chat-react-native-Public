@@ -1,4 +1,6 @@
-# CodeQL results 
+# SAST Scan results 
+
+## CodeQL 
 
 CodeQL provides its results through its graphical interface available via the link: [Security Results](https://github.com/henriquevsj/stream-chat-react-native-Public/security/code-scanning)
 
@@ -106,3 +108,7 @@ Usually, this is done by checking that the host of a URL is in a set of allowed 
 |23 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | docs/.../build/bundle.a39375a1.js:2           | master |
 |24 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | docs/.../build/bundle.a39375a1.js:2           | master |
 |25 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | docs/.../build/bundle.a39375a1.js:2           | master |
+
+## SonarQube 
+
+
