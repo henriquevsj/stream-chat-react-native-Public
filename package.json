@@ -21,6 +21,9 @@
     "lerna": "^4.0.0",
     "semantic-release": "^17.4.4"
   },
+  "jest": {
+    "testResultsProcessor": "jest-sonar-reporter"
+  },
   "jestSonar": {
     "sonar56x": true,
     "reportPath": ".",
