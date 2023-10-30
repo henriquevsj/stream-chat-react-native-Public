@@ -53,11 +53,8 @@
     "testResultsProcessor": "jest-sonar-reporter"
   },
   "jestSonar": {
-    "reportPath": "reports",
+    "reportPath": ".",
     "reportFile": "sonar-report.xml",
     "indent": 4
-  },
-  "dependencies": {
-    "react-scripts": "^5.0.1"
   }
 }
