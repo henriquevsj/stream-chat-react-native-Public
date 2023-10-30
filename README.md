@@ -2,7 +2,8 @@
 
 **Which mobile apps were used**
 
-It was used Stream Chat for evaluation, it has tight code and was developed using React Native
+It was used Stream Chat for evaluation, it has tight code and was developed using React Native.
+All pipelines in this repository are functional, in case you need to do any testing.
 
 **Code:** [Stream Chat React Native](https://github.com/GetStream/stream-chat-react-native)
 
