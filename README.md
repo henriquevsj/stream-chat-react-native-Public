@@ -14,7 +14,7 @@ Although GitHub Actions generates the artifact for installation on the Android e
 
 ## SAST
 
-**CodeQL**
+### CodeQL
 
 As I need to deliver this activity via GitHub and the repository must be public, I chose a tool with native integration and free to use as long as it is in public repositories, CodeQL.
 Scanning was configured in the GitHub repository configuration interface.
@@ -36,6 +36,38 @@ If necessary to direct personalized analysis, the following YAML code must be us
 ```
 Link: [CodeQL](https://codeql.github.com/) 
 
+### SonarQube
+
+In addition to the SAST analysis carried out by CodeQL, I also decided to implement the SonarQube analysis for SAST and also code quality analysis. The implementation was done as follows:
+
+1 - Using a Docker container, I uploaded an image containing SonarQube.
+
+2 - I created a configuration file in the root of the project (sonar-project.properties)
+
+3- I added the following YAML lines to perform the analysis:
+
+```
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+```
+
+The analysis was also being performed through commits or Pull Requests, but as the SonarQube analysis proceeds the build, I needed to make a few attempts until everything was correct, I decided to switch to manual analysis command: "workflow_dispatch"
+
+Link: [SonarQube](https://hub.docker.com/_/sonarqube)
+
+OBS:
+Unfortunately, even after numerous attempts (consult histories), I was unable to generate a test file for the sonarqube, as I would need more knowledge in the React language and its libraries. However, the SonarQube configuration itself is correct, and ready to receive the file:
+
+```
+    sonar.javascript.lcov.reportPaths=coverage/lcov.info
+    sonar.testExecutionReportPaths=sonar-report.xml
+```
 
 ## DAST
 
