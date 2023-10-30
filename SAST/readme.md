@@ -104,6 +104,4 @@ Usually, this is done by checking that the host of a URL is in a set of allowed 
 |19 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | package/.../Avatar/Avatar.tsx:115            | master |
 |20 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | package/.../Avatar/Avatar.tsx:114            | master |
 
-## SonarQube 
-
 
