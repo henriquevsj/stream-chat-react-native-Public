@@ -25,8 +25,7 @@
     "testResultsProcessor": "jest-sonar-reporter"
   },
   "jestSonar": {
-    "sonar56x": true,
-    "reportPath": ".",
+    "reportPath": "reports",
     "reportFile": "sonar-report.xml",
     "indent": 4
   },
@@ -55,7 +54,6 @@
     "detox-sample-android:build_debug": "detox build --configuration android.sample.debug",
     "detox-sample-ios:build_debug": "detox build --configuration ios.sample.debug",
     "detox-sample-android:test_debug": "PLATFORM=android detox test --configuration android.sample.debug e2e/entries/SampleApp.e2e.js",
-    "detox-sample-ios:test_debug": "PLATFORM=ios detox test --configuration ios.sample.debug e2e/entries/SampleApp.e2e.js",
-    "test:ci": "cross-env CI=true react-scripts test --reporters=default --coverage --testResultsProcessor ./node_modules/jest-sonar-reporter/index.js"
+    "detox-sample-ios:test_debug": "PLATFORM=ios detox test --configuration ios.sample.debug e2e/entries/SampleApp.e2e.js"
   }
 }
