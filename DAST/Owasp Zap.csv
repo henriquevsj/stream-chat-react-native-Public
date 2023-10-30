@@ -1,0 +1,8 @@
+ID,Source,Req. Timestamp,Method,URL,Code,Reason,RTT,Size Resp. Body,Highest Alert,Note,Tags
+6,Proxy,Sat Oct 28 23:45:12 BRT 2023,POST,https://clientservices.googleapis.com/uma/v2,200,OK,254,2,Low,false,
+13,Proxy,Sun Oct 29 00:24:00 BRT 2023,POST,https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw,400,Bad Request,293,41,Low,false,
+15,Proxy,Sun Oct 29 00:24:30 BRT 2023,POST,https://update.googleapis.com/service/update2/json?cup2key=10:978203188&cup2hreq=4cb040df01fb6d8c71aa2928791049a40adfeffa3633d9efc86fcb100e4a0cc1,200,OK,265,2628,Low,false,JSON
+481,Proxy,Sun Oct 29 00:26:58 BRT 2023,POST,https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw,400,Bad Request,289,41,Low,false,
+1438,Proxy,Sun Oct 29 00:29:30 BRT 2023,POST,https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw,400,Bad Request,290,41,Low,false,
+2372,Proxy,Sun Oct 29 00:32:00 BRT 2023,POST,https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw,400,Bad Request,319,41,Low,false,
+3477,Proxy,Sun Oct 29 00:34:57 BRT 2023,POST,https://optimizationguide-pa.googleapis.com/v1:GetModels?key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw,400,Bad Request,308,41,Low,false,
