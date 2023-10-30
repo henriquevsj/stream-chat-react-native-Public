@@ -4,7 +4,7 @@
 
 CodeQL provides its results through its graphical interface available via the link: [Security Results](https://github.com/henriquevsj/stream-chat-react-native-Public/security/code-scanning)
 
-Below is a table with the first 25 alerts just to make it easier to read, in addition to the description of 3 issues found:
+Below is a table with the first 20 alerts just to make it easier to read, in addition to the description of 3 issues found:
 
 **Incomplete string escaping or encoding**
 - Description: Sanitizing untrusted input is a common technique for preventing injection attacks such as SQL injection or cross-site scripting.
@@ -103,11 +103,6 @@ Usually, this is done by checking that the host of a URL is in a set of allowed 
 |18 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | package/.../Avatar/Avatar.tsx:116            | master |
 |19 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | package/.../Avatar/Avatar.tsx:115            | master |
 |20 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | package/.../Avatar/Avatar.tsx:114            | master |
-|21 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | docs/.../build/bundle.a39375a1.js:2           | master |
-|22 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | docs/.../build/bundle.a39375a1.js:2           | master |
-|23 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | docs/.../build/bundle.a39375a1.js:2           | master |
-|24 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | docs/.../build/bundle.a39375a1.js:2           | master |
-|25 | Incomplete URL substring sanitization  | High     | 2 days ago     | CodeQL                 | docs/.../build/bundle.a39375a1.js:2           | master |
 
 ## SonarQube 
 
