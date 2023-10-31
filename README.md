@@ -71,7 +71,7 @@ Unfortunately, even after numerous attempts (consult histories), I was unable to
 
 ## DAST
 
-**Owasp Zap**
+### Owasp Zap**
 
 For the DAST analysis, Owasp Zap was chosen because it is free to use and delivers good results despite sometimes generating false positives.
 This way, a real-time scan was carried out by Owasp Zap of the APK running using the Android Studio environment. For that:
@@ -87,7 +87,7 @@ Link: [Owasp Zap](https://www.zaproxy.org/)
 Problems and observations:
 The intention at this point was to perform a real-time Proxy scan of the application, but for some reason I was unsuccessful as the application stopped working when I used the proxy and the Zap certificate.
 
-**qark**
+### qark
 
 Due to the problems faced with the analysis carried out with Owasp Zap, I decided to use an approach to analyzing the binary itself.
 Using LinkedIn's qark I obtained a more complete analysis, for this:
@@ -99,3 +99,15 @@ Using LinkedIn's qark I obtained a more complete analysis, for this:
 3- Open and analyze the generated file
 
 Link: [qark](https://github.com/linkedin/qark)
+
+### MobSF
+
+For dynamic analysis at runtime I used MobSF, it is based on Frida and performs analyzes in different dimensions of the application. For that:
+
+1- Using a Docker container, I uploaded an image containingMobSF
+
+2- I ran an android device using Android Studio
+
+3- I requested the scan
+
+Link: [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) 
